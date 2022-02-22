@@ -1,0 +1,58 @@
+package com.company;
+
+public record Ship(int NumberOfContainers, double WaterCapacity, String Name, int length, int width, String Flag) {
+    private static int submersion  = 16;
+
+    //default constructor
+    Ship() {
+        this(0, 0, "UNKNOWN"); //call constructor with 3 parameters
+
+    }
+
+    //constructor with 3 parameters
+
+     Ship( int NumberOfContainers, double WaterCapacity, String Name) {
+        this (NumberOfContainers, WaterCapacity, Name, 0, 0,"UNKNOWN");
+
+    }
+
+
+   static int getStaticValue(){
+        return submersion;
+    }
+    static void printStaticsubmersion() {
+        System.out.println("submersion: " + submersion);
+    }
+
+    void printsubmersion() {
+        System.out.println("submersion: " + this.submersion);
+    }
+
+    @Override
+    public String toString() {
+        return "Length: " + this.length + "\n" +
+                "Width: " + this.width + "\n" +
+                "Water capacity: " + this.WaterCapacity + "\n" +
+                "Name: " + this.Name + "\n" +
+                "Number of containers: " + this.NumberOfContainers + "\n" +
+                "Flag: " + this.Flag + "\n";
+    }
+
+    };
+
+class Main {
+
+    public static void main(String[] args) {
+        Ship ship1= new Ship();
+        Ship ship2 =new Ship (30450, 26061.9, "NICOLAS DELMAS");
+        Ship ship3 = new Ship(216900, 236583.4, "CMA CGM MONTMARTRE",398,125, "Bahamas");
+        String str = ship1.toString();
+        System.out.println("ship 1\n " + str);
+        str = ship2.toString();
+        System.out.println("ship 2\n " + str);
+        str = ship3.toString();
+        System.out.println("ship 3\n " + str);
+        int staticV = ship2.getStaticValue();
+        System.out.println("submersion = " + staticV);
+    }
+}
